@@ -53,8 +53,8 @@
                         <th scope="col">Tên Hàng</th>
                         <th scope="col">Giá Cả</th>
                         <th scope="col">Số Lượng Xuất Ra</th>
-                        <th scope="col">Ngày Xuất Hàng</th>
                         <th scope="col">Ngày Nhập Hàng</th>
+                        <th scope="col">Ngày Xuất Hàng</th>
                         <th scope="col">Thành Tiền</th>                   
                     </tr>
                 </thead>
@@ -86,7 +86,7 @@
                         <td>2000000 vnd</td>
                         <td>50 Thùng</td>
                     </tr>
-                    
+
                 </tbody>
             </table>
             <div class="div-btn">
