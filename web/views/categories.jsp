@@ -46,33 +46,29 @@
 
         </header>
         <section class="session">
-            <h2 class="title">Lượng Hàng Tồn Kho</h2>
+            <h2 class="title">Lượng Hàng Trong Kho</h2>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col"><input type='checkbox'  id='check' value='' /></th>
-                        <th scope="col">Loại Mặt Hàng</th>                      
-                        <th scope="col">Image</th>                      
-                        <th scope="col">Số Lượng Tồn Kho</th>
+                        <th scope="col">Loại Mặt Hàng</th>                                        
+                        <th scope="col">Số Lượng Trong Kho</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row"><input type='checkbox'  id='check' value='' /></th>
                         <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td></td>
                         <td>40 Thùng</td>
                     </tr>
                     <tr>
                         <th scope="row"><input type='checkbox'  id='check' value='' /></th>
                         <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td></td>
                         <td>40 Thùng</td>
                     </tr>
                     <tr>
                         <th scope="row"><input type='checkbox'  id='check' value='' /></th>
                         <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td></td>
                         <td>40 Thùng</td>
                     </tr>
                 </tbody>

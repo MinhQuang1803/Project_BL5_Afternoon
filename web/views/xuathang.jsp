@@ -46,7 +46,7 @@
 
         </header>
         <section class="session">
-            <h2 class="title">Sửa Thông Tin Sản Phẩm Xuất Kho</h2>
+            <h2 class="title">Phiếu Xuất Kho</h2>
             <form>
                 <table class="table">
                     <tr>
@@ -63,13 +63,17 @@
                         <th><input type="text" class="in"/></th>
                     </tr>
                     <tr>
-                        <th scope="row" class="label">Thành Tiền</th>
+                        <th scope="row" class="label">Kho</th>
                         <th><input type="text" class="in"/></th>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="label">Thành Tiền</th>
+                        <th><input type="text" class="in" readonly=""/></th>
                     </tr>
                 </table>
                 <div class="div-btn">
-                    <input type="submit" value="Tổng Tiền">
-                    <input type="submit" value="Save"/>
+                    <button type="button" class="btn btn-primary">Thành Tiền</button>
+                    <button type="button" class="btn btn-secondary">Save</button>
                 </div>
             </form> 
         </section>

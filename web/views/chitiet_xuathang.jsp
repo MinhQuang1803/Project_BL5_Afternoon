@@ -52,8 +52,8 @@
                         <th scope="col"><input type='checkbox'  id='check' value='' /></th>
                         <th scope="col">Tên Hàng</th>
                         <th scope="col">Giá Cả</th>
+                        <th scope="col">Kho</th>
                         <th scope="col">Số Lượng Xuất Ra</th>
-                        <th scope="col">Ngày Nhập Hàng</th>
                         <th scope="col">Ngày Xuất Hàng</th>
                         <th scope="col">Thành Tiền</th>                   
                     </tr>

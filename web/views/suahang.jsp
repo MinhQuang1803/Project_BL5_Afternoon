@@ -65,8 +65,19 @@
                     <th scope="row" class="label">Ngày Xuất Hàng</th>
                     <th><input type="date" class="in"/></th>
                 </tr>
+                <tr>
+                    <th scope="row" class="label">Kho</th>
+                    <th><input type="text" class="in"/></th>
+                </tr>
+                <tr>
+                    <th scope="row" class="label">Thành Tiền</th>
+                    <th><input type="text" class="in" readonly=""/></th>
+                </tr>
             </table>
-            <div class="div-btn"><input type="submit" value="Save"/></div>
+            <div class="div-btn">
+                <button type="button" class="btn btn-primary">Thành Tiền</button>
+                <button type="button" class="btn btn-secondary">Save</button>
+            </div>
         </form> 
         </section>
         <footer class="page-footer font-small blue pt-4">
