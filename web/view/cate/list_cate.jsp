@@ -6,6 +6,8 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +49,8 @@
         </header>
         <section class="session">
             <h2 class="title">Lượng Hàng Trong Kho</h2>
-            <table class="table">
+            <form action="list" method="POST">
+                <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col"><input type='checkbox'  id='check' value='' /></th>
@@ -56,23 +59,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${requestScope.products}" var="p">
                     <tr>
                         <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td>40 Thùng</td>
+                        <td></td>
+                        <td>${p.product_left}</td>
                     </tr>
-                    <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td>40 Thùng</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td><a href="chitiet_xuathang.jsp">Coca Cola</a></td>
-                        <td>40 Thùng</td>
-                    </tr>
+                </c:forEach>               
                 </tbody>
             </table>
+            </form>
+            
         </section>
         <footer class="page-footer font-small blue pt-4">
             <div class="footer-copyright text-center py-3">© 2020 Copyright:
