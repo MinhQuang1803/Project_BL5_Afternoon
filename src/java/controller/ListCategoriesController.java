@@ -6,21 +6,24 @@
 package controller;
 
 import dao.ProductDAO;
+import dao.ReleaseDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
 import model.Product;
+import model.ReleaseDetail;
 
 /**
  *
  * @author asus
  */
-public class ListCateController extends HttpServlet {
+public class ListCategoriesController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,8 +38,26 @@ public class ListCateController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            ProductDAO db = new ProductDAO();
-            ArrayList<Product> products = db.getAllCate();
+            ProductDAO productDAO = new ProductDAO();
+            ReleaseDetailDAO releaseDetailDAO = new ReleaseDetailDAO();
+            List<Product> products = productDAO.getAllCate();
+            List<ReleaseDetail> releaseDetails = releaseDetailDAO.getTotalNumberOut();
+            int count = -1;
+            for (Product p : products) {
+                count++;
+                for (ReleaseDetail releaseDetail : releaseDetails) {
+                    if (p.getCate().getLid() == releaseDetail.getProduct().getCate().getLid()) {
+                        Product product = new Product();
+                        int temp = p.getTotal() - releaseDetail.getNumber_out();
+                        product.setTotal(temp);
+                        Category c = new Category();
+                        c.setLid(p.getCate().getLid());
+                        c.setLname(p.getCate().getLname());
+                        product.setCate(c);
+                        products.set(count, product);
+                    }
+                }
+            }
             request.setAttribute("products", products);
             request.getRequestDispatcher("../view/cate/list_cate.jsp").forward(request, response);
         } catch (Exception e) {
@@ -55,7 +76,6 @@ public class ListCateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
 
     }
 

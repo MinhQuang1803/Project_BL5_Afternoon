@@ -5,16 +5,29 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author asus
  */
 public class Product {
+
     private int mid;
     private String mname;
     private int product_left;
     private double price;
+    private int total;
     private Category cate;
+    
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public int getMid() {
         return mid;
@@ -56,5 +69,4 @@ public class Product {
         this.cate = cate;
     }
 
-    
 }

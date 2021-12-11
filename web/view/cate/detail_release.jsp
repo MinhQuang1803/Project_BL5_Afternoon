@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,49 +48,41 @@
         </header>
         <section class="session">
             <h2 class="title">Chi Tiết Xuất Kho</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col"><input type='checkbox'  id='check' value='' /></th>
-                        <th scope="col">Tên Hàng</th>
-                        <th scope="col">Giá Cả</th>
-                        <th scope="col">Kho</th>
-                        <th scope="col">Số Lượng Xuất Ra</th>
-                        <th scope="col">Ngày Xuất Hàng</th>
-                        <th scope="col">Thành Tiền</th>                   
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td>Coca Cola</td>
-                        <td>200000</td>
-                        <td>10 Thùng</td>
-                        <td>2020</td>
-                        <td>2000000 vnd</td>
-                        <td>50 Thùng</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td>Coca Cola</td>
-                        <td>200000</td>
-                        <td>10 Thùng</td>
-                        <td>2020</td>
-                        <td>2000000 vnd</td>
-                        <td>50 Thùng</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td>Coca Cola</td>
-                        <td>200000</td>
-                        <td>10 Thùng</td>
-                        <td>2020</td>
-                        <td>2000000 vnd</td>
-                        <td>50 Thùng</td>
-                    </tr>
+            <div class="search">
+                From: <input type="date" name="from"/>
+                To: <input type="date" name="to"/>
+                <input type="text" name="search"/>
+                <input type="submit" value="Search"/>
+            </div>
+            <form action="detail" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"><input type='checkbox'  id='check' value='' /></th>
+                            <th scope="col">Tên Hàng</th>
+                            <th scope="col">Giá Cả</th>
+                            <th scope="col">Kho</th>
+                            <th scope="col">Số Lượng Xuất Ra</th>
+                            <th scope="col">Ngày Xuất Hàng</th>
+                            <th scope="col">Thành Tiền</th>                   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${requestScope.releaseDetails}" var="p">
+                            <tr>
+                                <th scope="row"><input type='checkbox'  id='check' value='' /></th>
+                                <td>${p.product.mname}</td>
+                                <td>${p.product.price}</td>
+                                <td>${p.release.warehouse.kname}</td>
+                                <td>${p.number_out}</td>
+                                <td>${p.release.pdate}</td>
+                                <td>${p.total}</td>
+                            </tr>            
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </form>
 
-                </tbody>
-            </table>
             <div class="div-btn">
                 <button type="button" class="btn btn-primary">Xuất Sản Phẩm</button>
                 <button type="button" class="btn btn-secondary">Sửa Sản Phẩm</button>

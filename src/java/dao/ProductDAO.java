@@ -9,10 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
 import model.Product;
+import model.Release;
+import model.ReleaseDetail;
+import model.Warehouse;
 
 /**
  *
@@ -20,10 +24,10 @@ import model.Product;
  */
 public class ProductDAO extends DBContext {
 
-    public ArrayList<Product> getAllCate() {
-        ArrayList<Product> products = new ArrayList<>();
+    public List<Product> getAllCate() {
+        List<Product> products = new ArrayList<>();
         try {
-            String sql = "select l.lid,l.lname, SUM(m.product_left) as total from  MatHang m INNER JOIN LoaiHang l On m.lid=l.lid \n"
+            String sql = "SELECT l.lid,l.lname, SUM(m.product_left) as total from  MatHang m INNER JOIN LoaiHang l On m.lid=l.lid \n"
                     + "GROUP BY l.lid , l.lname";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
@@ -32,8 +36,7 @@ public class ProductDAO extends DBContext {
                 c.setLid(rs.getInt("lid"));
                 c.setLname(rs.getString("lname"));
                 Product p = new Product();
-                p.setMid(rs.getInt("mid"));
-                p.setProduct_left(rs.getInt("product_left"));
+                p.setTotal(rs.getInt("total"));
                 p.setCate(c);
                 products.add(p);
             }
@@ -43,4 +46,5 @@ public class ProductDAO extends DBContext {
         }
         return products;
     }
+    
 }

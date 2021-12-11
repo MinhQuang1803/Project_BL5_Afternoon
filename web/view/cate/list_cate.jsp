@@ -48,7 +48,7 @@
 
         </header>
         <section class="session">
-            <h2 class="title">Lượng Hàng Trong Kho</h2>
+            <h2 class="title">Loại Hàng Trong Kho</h2>
             <form action="list" method="POST">
                 <table class="table">
                 <thead class="thead-dark">
@@ -62,8 +62,8 @@
                 <c:forEach items="${requestScope.products}" var="p">
                     <tr>
                         <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td></td>
-                        <td>${p.product_left}</td>
+                        <td><a href="detail?id=${p.cate.lid}">${p.cate.lname}</a></td>
+                        <td>${p.total}</td>
                     </tr>
                 </c:forEach>               
                 </tbody>
