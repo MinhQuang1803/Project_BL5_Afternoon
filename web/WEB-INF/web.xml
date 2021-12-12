@@ -8,6 +8,18 @@
         <servlet-name>DetailProductController</servlet-name>
         <servlet-class>controller.DetailProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>controller.DeleteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddController</servlet-name>
+        <servlet-class>controller.AddController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditController</servlet-name>
+        <servlet-class>controller.EditController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListCategoriesController</servlet-name>
         <url-pattern>/cate/list</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>DetailProductController</servlet-name>
         <url-pattern>/cate/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/cate/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddController</servlet-name>
+        <url-pattern>/cate/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/cate/edit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

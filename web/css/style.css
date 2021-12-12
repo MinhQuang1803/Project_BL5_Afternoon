@@ -5,13 +5,9 @@
 .div-btn{
     float: right;
     margin: 1%;
-    width: 450px;
+    width: 250px;
 }
 
-.search{
-    float: right;
-    margin: 1%;
-}
 .table{
     text-align: center;
 }

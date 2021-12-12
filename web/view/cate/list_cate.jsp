@@ -53,7 +53,6 @@
                 <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col"><input type='checkbox'  id='check' value='' /></th>
                         <th scope="col">Loại Mặt Hàng</th>                                        
                         <th scope="col">Số Lượng Trong Kho</th>
                     </tr>
@@ -61,8 +60,7 @@
                 <tbody>
                 <c:forEach items="${requestScope.products}" var="p">
                     <tr>
-                        <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                        <td><a href="detail?id=${p.cate.lid}">${p.cate.lname}</a></td>
+                        <td><a href="detail?lid=${p.cate.lid}">${p.cate.lname}</a></td>
                         <td>${p.total}</td>
                     </tr>
                 </c:forEach>               

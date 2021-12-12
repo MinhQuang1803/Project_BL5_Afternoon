@@ -46,5 +46,51 @@ public class ProductDAO extends DBContext {
         }
         return products;
     }
-    
+
+    public List<Product> getAllProductNameByCateId(int categoryId) {
+        List<Product> products = new ArrayList<>();
+        try {
+            String sql = "SELECT m.mname,l.lid FROM Mathang m INNER JOIN LoaiHang l\n"
+                    + "ON m.lid = l.lid\n"
+                    + "WHERE m.lid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, categoryId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+                category.setLid(rs.getInt("lid"));
+                Product product = new Product();
+                product.setMname(rs.getString("mname"));
+                product.setCate(category);
+                products.add(product);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
+
+    public List<Product> getAllProductData() {
+        List<Product> products = new ArrayList<>();
+        try {
+            String sql = "SELECT m.mname,m.price,c.total FROM MatHang m \n"
+                    + "INNER JOIN ChiTietPhieuXuat c ON m.mid = c.mid";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                ReleaseDetail releaseDetail = new ReleaseDetail();
+                releaseDetail.setTotal(rs.getDouble("total"));
+                Product product = new Product();
+                product.setMname(rs.getString("mname"));
+                product.setPrice(rs.getDouble("price"));
+                product.setReleaseDetail(releaseDetail);
+                products.add(product);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
 }

@@ -27,7 +27,7 @@ public class ReleaseDetailDAO extends DBContext {
     public List<ReleaseDetail> getDataByCategoryId(int categoryId) {
         List<ReleaseDetail> releaseDetails = new ArrayList<>();
         try {
-            String sql = "SELECT m.mid,m.mname,m.price,k.kname,c.number_out,p.pdate,c.total FROM MatHang m \n"
+            String sql = "SELECT l.lid, c.cid, m.mid, m.mname, m.price, k.kname, c.number_out, p.pdate, c.total FROM MatHang m \n"
                     + "INNER JOIN ChiTietPhieuXuat c ON m.mid=c.mid\n"
                     + "INNER JOIN PhieuXuatHang p ON p.pid=c.pid\n"
                     + "INNER JOIN Kho k ON k.kid=p.kid\n"
@@ -37,6 +37,9 @@ public class ReleaseDetailDAO extends DBContext {
             stm.setInt(1, categoryId);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
+                Category c = new Category();
+                c.setLid(rs.getInt("lid"));
+                
                 Warehouse w = new Warehouse();
                 w.setKname(rs.getString("kname"));
 
@@ -48,8 +51,10 @@ public class ReleaseDetailDAO extends DBContext {
                 p.setMid(rs.getInt("mid"));
                 p.setMname(rs.getString("mname"));
                 p.setPrice(rs.getDouble("price"));
+                p.setCate(c);
 
                 ReleaseDetail rd = new ReleaseDetail();
+                rd.setCid(rs.getInt("cid"));
                 rd.setNumber_out(rs.getInt("number_out"));
                 rd.setTotal(rs.getDouble("total"));
                 rd.setRelease(r);

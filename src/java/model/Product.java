@@ -20,6 +20,15 @@ public class Product {
     private double price;
     private int total;
     private Category cate;
+    private ReleaseDetail releaseDetail;
+
+    public ReleaseDetail getReleaseDetail() {
+        return releaseDetail;
+    }
+
+    public void setReleaseDetail(ReleaseDetail releaseDetail) {
+        this.releaseDetail = releaseDetail;
+    }
     
     public int getTotal() {
         return total;

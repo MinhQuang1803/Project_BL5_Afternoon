@@ -7,6 +7,7 @@ package controller;
 
 import dao.ProductDAO;
 import dao.ReleaseDetailDAO;
+import dao.WarehouseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import model.Warehouse;
  *
  * @author asus
  */
-public class DetailProductController extends HttpServlet {
+public class AddController extends HttpServlet {
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -38,15 +39,14 @@ public class DetailProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            int lid = Integer.parseInt(request.getParameter("lid"));
-            ReleaseDetailDAO db = new ReleaseDetailDAO();           
-            List<ReleaseDetail> releaseDetails = db.getDataByCategoryId(lid);
-            request.setAttribute("releaseDetails", releaseDetails);
-            request.getRequestDispatcher("../view/cate/detail_release.jsp").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int lid = Integer.parseInt(request.getParameter("lid"));
+        ProductDAO productDAO = new ProductDAO();
+        WarehouseDAO warehouseDAO = new WarehouseDAO();
+        List<Product> products = productDAO.getAllProductNameByCateId(lid);
+        List<Warehouse> warehouses = warehouseDAO.getAllWarehouse();
+        request.setAttribute("products", products);
+        request.setAttribute("warehouses", warehouses);
+        request.getRequestDispatcher("../view/cate/add.jsp").forward(request, response);
     }
 
     /**
@@ -60,7 +60,17 @@ public class DetailProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+//        ProductDAO productDAO = new ProductDAO();
+//        List<Product> products = productDAO.getAllProductData();
+//        for (Product p : products) {
+//            Product product = new Product();
+//            double temp = p.getPrice()*p.getReleaseDetail().getNumber_out();
+//            ReleaseDetail releaseDetail = new ReleaseDetail();
+//            releaseDetail.setTotal(temp);
+//            product.setReleaseDetail(releaseDetail);
+//        }
+//        request.setAttribute("products", products);
+//        request.getRequestDispatcher("../view/cate/add.jsp").forward(request, response);
     }
 
     /**

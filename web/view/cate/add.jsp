@@ -6,6 +6,8 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,14 +49,15 @@
         </header>
         <section class="session">
             <h2 class="title">Phiếu Xuất Kho</h2>
-            <form>
+            <form action="add" method="POST">
                 <table class="table">
                     <tr>
                         <th scope="row" class="label">Tên Hàng</th>
                         <th>
-                            <select class="in">
-                                <option>Kẹo Mút</option>
-                                <option>Kẹo Dẻo</option>
+                            <select class="in" name="product">
+                                <c:forEach items="${requestScope.products}" var="p">                                
+                                    <option>${p.mname}</option>
+                                </c:forEach>
                             </select>
                         </th>
                     </tr>
@@ -64,7 +67,13 @@
                     </tr>
                     <tr>
                         <th scope="row" class="label">Kho</th>
-                        <th><input type="text" class="in"/></th>
+                        <th>
+                            <select class="in" name="warehouse">
+                                <c:forEach items="${requestScope.warehouses}" var="w">                                
+                                    <option>${w.kname}</option>
+                                </c:forEach>
+                            </select>
+                        </th>
                     </tr>
                     <tr>
                         <th scope="row" class="label">Thành Tiền</th>

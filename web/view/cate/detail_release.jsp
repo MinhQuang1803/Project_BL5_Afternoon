@@ -48,45 +48,42 @@
         </header>
         <section class="session">
             <h2 class="title">Chi Tiết Xuất Kho</h2>
-            <div class="search">
-                From: <input type="date" name="from"/>
-                To: <input type="date" name="to"/>
-                <input type="text" name="search"/>
-                <input type="submit" value="Search"/>
-            </div>
             <form action="detail" method="POST">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col"><input type='checkbox'  id='check' value='' /></th>
+                            <th scope="col"></th>
                             <th scope="col">Tên Hàng</th>
                             <th scope="col">Giá Cả</th>
                             <th scope="col">Kho</th>
                             <th scope="col">Số Lượng Xuất Ra</th>
                             <th scope="col">Ngày Xuất Hàng</th>
-                            <th scope="col">Thành Tiền</th>                   
+                            <th scope="col">Thành Tiền</th>   
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${requestScope.releaseDetails}" var="p">
-                            <tr>
-                                <th scope="row"><input type='checkbox'  id='check' value='' /></th>
-                                <td>${p.product.mname}</td>
-                                <td>${p.product.price}</td>
-                                <td>${p.release.warehouse.kname}</td>
-                                <td>${p.number_out}</td>
-                                <td>${p.release.pdate}</td>
-                                <td>${p.total}</td>
-                            </tr>            
+                        <tr>
+                            <c:set var = "lid" scope = "session" value = "${p.product.cate.lid}"/>
+                            <input type="hidden" value="${p.product.cate.lid}" name="lid"/>
+                            <th scope="row"><input type="hidden" value="${p.cid}" name="cid"/></th>
+                            <td>${p.product.mname}</td>
+                            <td>${p.product.price} VND</td>
+                            <td>${p.release.warehouse.kname}</td>
+                            <td>${p.number_out}</td>
+                            <td>${p.release.pdate}</td>
+                            <td>${p.total} VND</td>
+                            <td><input type="submit" class="btn btn-secondary" value="Sửa Sản Phẩm" onclick="window.location.href = 'edit'"/></td>
+                        </tr>            
                         </c:forEach>
                     </tbody>
                 </table>
             </form>
 
             <div class="div-btn">
-                <button type="button" class="btn btn-primary">Xuất Sản Phẩm</button>
-                <button type="button" class="btn btn-secondary">Sửa Sản Phẩm</button>
-                <button type="button" class="btn btn-success">Xóa Sản Phẩm</button>
+                <input type="submit" class="btn btn-primary" value="Quay Lại" onclick="window.location.href = 'list'"/>
+                <input type="submit" class="btn btn-primary" value="Xuất Sản Phẩm" onclick="window.location.href = 'add?lid=${sessionScope.lid}'"/>     
             </div>
         </section>
         <footer class="page-footer font-small blue pt-4">
