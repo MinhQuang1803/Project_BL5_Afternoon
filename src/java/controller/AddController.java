@@ -70,7 +70,6 @@ public class AddController extends HttpServlet {
 //            product.setReleaseDetail(releaseDetail);
 //        }
 //        request.setAttribute("products", products);
-//        request.getRequestDispatcher("../view/cate/add.jsp").forward(request, response);
     }
 
     /**
