@@ -60,16 +60,16 @@ public class AddController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        ProductDAO productDAO = new ProductDAO();
-//        List<Product> products = productDAO.getAllProductData();
-//        for (Product p : products) {
-//            Product product = new Product();
-//            double temp = p.getPrice()*p.getReleaseDetail().getNumber_out();
-//            ReleaseDetail releaseDetail = new ReleaseDetail();
-//            releaseDetail.setTotal(temp);
-//            product.setReleaseDetail(releaseDetail);
-//        }
-//        request.setAttribute("products", products);
+        ProductDAO productDAO = new ProductDAO();
+        List<Product> products = productDAO.getAllProductData();
+        for (Product p : products) {
+            Product product = new Product();
+            double temp = p.getPrice()*p.getReleaseDetail().getNumber_out();
+            ReleaseDetail releaseDetail = new ReleaseDetail();
+            releaseDetail.setTotal(temp);
+            product.setReleaseDetail(releaseDetail);
+        }
+        request.setAttribute("products", products);
     }
 
     /**
